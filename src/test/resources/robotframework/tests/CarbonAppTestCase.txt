@@ -1,0 +1,28 @@
+*** Settings ***
+Resource  taflibrary.txt
+Library	robotlib.CarbonAppUploaderLibrary
+Library	robotlib.ApplicationAdminLibrary
+
+*** Test Cases ***
+Loging to AS
+	Login As  admin  admin  localhost 			#logging as admin 
+	
+carApplicationUpload				
+	init CarbonAppUploader
+	${items}=	createUploadedFileItems  src/test/resources/artifacts/AS/car/AxisCApp-1.0.0.car
+	uploadApp  ${items}
+	
+#verifyAppList
+	
+invokeService
+	set ServiceName  Calculator
+	set ServiceOperation  add
+	set ServiceParas  a  100
+	set ServiceParas  b  400
+	${om}=	InvokeOperation
+	${isVal}=	containString  ${om}  <ns:addResponse xmlns:ns="http://test.com"><ns:return>500</ns:return></ns:addResponse>
+	assertTrue  ${isVal}
+	
+carAppDelete
+	init ApplicationAdmin
+	deleteApplication  AxisCApp_1.0.0
