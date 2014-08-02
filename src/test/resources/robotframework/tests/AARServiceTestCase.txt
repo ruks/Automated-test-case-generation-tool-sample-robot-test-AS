@@ -1,0 +1,26 @@
+*** Settings ***
+Resource  taflibrary.txt
+
+*** Test Cases ***
+Loging to AS
+	Login As  admin  admin  localhost 			#logging as admin 
+	
+testAarServiceUpload				
+	init ServiceUploader
+	init ServiceAdmin
+	
+	${data}=	create AARServiceData  src/test/resources/artifacts/AS/aar/Axis2Service.aar
+	${res}=	uploadService  ${data}						          
+	assertEquals  ${res}  successful
+	${res}=	get ServiceData  Axis2Service
+	assertNotNull  ${res}
+	
+invokeService
+	set ServiceName  Axis2Service
+	set ServiceOperation  echoInt
+	set ServiceParas  x  25
+	${om}=	InvokeOperation
+	${isVal}=	containString  ${om}  <ns:return>25</ns:return>
+	assertTrue  ${isVal}
+	
+	
