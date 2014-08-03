@@ -1,0 +1,29 @@
+*** Settings ***
+Resource  taflibrary.txt
+
+*** Test Cases ***
+Loging to AS
+	Login As  admin  admin  localhost 			#logging as admin 
+	
+testAarServiceUpload				
+	init ServiceUploader
+	init ServiceAdmin
+	
+	${data}=	create AARServiceData  src/test/resources/artifacts/AS/aar/MTOMService.aar
+	${res}=	uploadService  ${data}						          
+	assertEquals  ${res}  successful
+	wait Deploy Service  MTOMSample
+	${res}=	get ServiceData  MTOMSample
+	assertNotNull  ${res}
+	
+	
+invokeService
+	set ServiceName  MTOMSample
+	set ServiceOperation  AttachmentRequest
+	set ServiceParas  fileName  MTOM Image.jpeg
+	set ServiceParas  binaryData  DATADATA				#replace DATADATA with actual data
+	${om}=	InvokeOperation
+	${isVal}=	containString  ${om}  File MTOM Image.jpeg has been successfully saved
+	assertTrue  ${isVal}
+	
+	

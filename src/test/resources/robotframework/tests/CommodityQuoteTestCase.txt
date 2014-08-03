@@ -1,0 +1,27 @@
+*** Settings ***
+Resource  taflibrary.txt
+
+*** Test Cases ***
+Loging to AS
+	Login As  admin  admin  localhost 			#logging as admin 
+	
+testComQuoSerUpload				
+	init ServiceUploader
+	init ServiceAdmin
+	
+	${data}=	create AARServiceData  src/test/resources/artifacts/AS/aar/CommodityQuoteService.aar
+	${res}=	uploadService  ${data}						          
+	assertEquals  ${res}  successful
+	wait Deploy Service  CommodityQuote
+	
+invokeService
+	set ServiceName  CommodityQuote
+	set ServiceOperation  getQuote
+	set ServiceParas  symbol  mn
+	#${om}=	InvokeOperation
+	#${name}=	get Response Attribute Value  name
+	#${symbol}=	get Response Attribute Value  symbol
+	#assertEquals  Manganese  ${name}
+	#assertEquals  mn  ${symbol}
+	
+	

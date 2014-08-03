@@ -1,7 +1,6 @@
 *** Settings ***
 Resource  taflibrary.txt
-Library	robotlib.CarbonAppUploaderLibrary
-Library	robotlib.ApplicationAdminLibrary
+
 
 *** Test Cases ***
 Loging to AS
@@ -11,8 +10,12 @@ carApplicationUpload
 	init CarbonAppUploader
 	${items}=	createUploadedFileItems  src/test/resources/artifacts/AS/car/AxisCApp-1.0.0.car
 	uploadApp  ${items}
+	wait Deploy Service  Calculator
 	
-#verifyAppList
+verifyAppList
+	init ApplicationAdmin
+	${ob}=	get AppData  AxisCApp_1.0.0
+	assertNotNull  ${ob}
 	
 invokeService
 	set ServiceName  Calculator

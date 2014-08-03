@@ -14,6 +14,7 @@ testAarServiceUpload
 	assertEquals  ${res}  successful
 	${res}=	get ServiceData  Axis2Service
 	assertNotNull  ${res}
+	wait Deploy Service  Axis2Service
 	
 invokeService
 	set ServiceName  Axis2Service
