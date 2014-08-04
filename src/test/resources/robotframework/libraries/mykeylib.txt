@@ -1,0 +1,6 @@
+*** Settings ***
+Library	Example
+
+*** Keywords ***
+Say Hello Lib
+	say Hello

@@ -1,0 +1,11 @@
+*** Settings ***
+Resource  mykeylib.txt
+Library	Example
+
+*** Test Cases ***
+
+customLib
+	say Hello
+	
+keyLib
+	Say Hello Lib
