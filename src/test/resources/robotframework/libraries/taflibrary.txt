@@ -2,10 +2,11 @@
 Library  lib.Standard
 Library  lib.AuthenticationLibrary
 Library  lib.AxisServiceClient
-Library  lib.ProxyServiceAdminLibrary
 Library	 lib.AssertLibrary
-Library	 lib.ASObjectPool
+Library	 lib.ObjectPool
+
 Library	 robotlib.ServiceUploaderLibrary
 Library	 robotlib.ServiceAdminLibrary
 Library	 robotlib.CarbonAppUploaderLibrary
 Library	 robotlib.ApplicationAdminLibrary
+Library  robotlib.ProxyServiceAdminLibrary

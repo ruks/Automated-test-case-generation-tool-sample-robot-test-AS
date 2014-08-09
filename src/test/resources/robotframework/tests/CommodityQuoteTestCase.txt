@@ -18,10 +18,18 @@ invokeService
 	set ServiceName  CommodityQuote
 	set ServiceOperation  getQuote
 	set ServiceParas  symbol  mn
+	
 	#${om}=	InvokeOperation
 	#${name}=	get Response Attribute Value  name
 	#${symbol}=	get Response Attribute Value  symbol
 	#assertEquals  Manganese  ${name}
 	#assertEquals  mn  ${symbol}
+	
+	${res}=	create Payload With Text  <ns1:getQuoteRequest xmlns:ns1="http://www.wso2.org/types"> <symbol>mn</symbol></ns1:getQuoteRequest>
+	
+	${name}=	containString  ${res}  Manganese
+	assertTrue  ${name}
+	${symbol}=	containString  ${res}  mn
+	assertTrue  ${symbol}
 	
 	

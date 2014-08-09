@@ -12,10 +12,10 @@ carApplicationUpload
 	uploadApp  ${items}
 	wait Deploy Service  Calculator
 	
-verifyAppList
-	init ApplicationAdmin
-	${ob}=	get AppData  AxisCApp_1.0.0
-	assertNotNull  ${ob}
+#verifyAppList
+	#init ApplicationAdmin
+	#${ob}=	get AppData  AxisCApp_1.0.0
+	#assertNotNull  ${ob}
 	
 invokeService
 	set ServiceName  Calculator

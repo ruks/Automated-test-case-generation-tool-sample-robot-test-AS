@@ -13,8 +13,8 @@ testAarServiceUpload
 	${res}=	uploadService  ${data}						          
 	assertEquals  ${res}  successful
 	wait Deploy Service  MTOMSample
-	${res}=	get ServiceData  MTOMSample
-	assertNotNull  ${res}
+	#${res}=	get ServiceData  MTOMSample
+	#assertNotNull  ${res}
 	
 	
 invokeService
