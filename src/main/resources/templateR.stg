@@ -34,15 +34,16 @@ public void  Assert<methodName>(<returnType> expected) {
 
 >>
 
-class(name,fields,methods,clsimport,namestub) ::=<<
-package robotlib;
+class(name,fields,methods,clsimport,namestub,package) ::=<<
+
+//package robotlib;
+<package>
+
 import lib.AuthenticationLibrary;
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.client.ServiceClient;
-//import org.junit.Assert;
 import org.testng.Assert;
-import property.PropertyInfo;
 import property.AutomationContext;
 <clsimport>
 
@@ -92,6 +93,21 @@ public class <name>Library{
 >>
 
 back()::=<<
+try {
+	<if(cond)>
+	this.<methodName>=stub.<methodName>(<parasRet>);
+	<else>stub.<methodName>(<parasRet>);
+	<endif>
+	<if(cond)>return this.<methodName>;<endif>
+	}catch(java.lang.Exception ex){
+	<if(cond)>
+		this.<methodName>=null;
+		return null;
+	<endif>
+	}
+>>
+
+poolMethod()::=<<
 try {
 	<if(cond)>
 	this.<methodName>=stub.<methodName>(<parasRet>);

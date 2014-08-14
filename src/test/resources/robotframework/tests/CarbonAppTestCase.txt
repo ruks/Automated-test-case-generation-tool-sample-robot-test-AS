@@ -4,7 +4,7 @@ Resource  taflibrary.txt
 
 *** Test Cases ***
 Loging to AS
-	Login As  admin  admin  localhost 			#logging as admin 
+	Login As  admin-admin 			#logging as admin 
 	
 carApplicationUpload				
 	init CarbonAppUploader
