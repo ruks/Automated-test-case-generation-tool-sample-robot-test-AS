@@ -1,12 +1,12 @@
 *** Settings ***
-Library  lib.Standard
-Library  lib.AuthenticationLibrary
-Library  lib.AxisServiceClient
-Library	 lib.AssertLibrary
-Library	 lib.ObjectPool
+Library  client.support.modules.Standard
+Library  client.support.modules.AuthenticationLibrary
+Library  client.support.modules.AxisServiceClient
+Library	 client.support.modules.AssertLibrary
+Library	 client.support.modules.ObjectPool
 
-Library	 robotlib.ServiceUploaderLibrary
-Library	 robotlib.ServiceAdminLibrary
-Library	 robotlib.CarbonAppUploaderLibrary
-Library	 robotlib.ApplicationAdminLibrary
-Library  robotlib.ProxyServiceAdminLibrary
+Library	 clients.ServiceUploaderLibrary
+Library	 clients.ServiceAdminLibrary
+Library	 clients.CarbonAppUploaderLibrary
+Library	 clients.ApplicationAdminLibrary
+Library  clients.ProxyServiceAdminLibrary

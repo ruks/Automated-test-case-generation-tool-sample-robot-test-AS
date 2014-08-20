@@ -289,7 +289,7 @@
 			<axis2>http://localhost:9769/services</axis2>
 		</server>
 		<exe>
-			<attemt>60</attemt>
+			<attemt>6</attemt>
 		</exe>
 	</robotconfig>
 </automation>

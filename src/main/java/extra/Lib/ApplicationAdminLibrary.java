@@ -1,14 +1,16 @@
 //package robotlib;
 package extra.Lib;
 
-import lib.AuthenticationLibrary;
 import org.apache.axis2.AxisFault;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.client.ServiceClient;
 import org.testng.Assert;
-import property.AutomationContext;
 import org.wso2.carbon.application.mgt.stub.ApplicationAdminStub;
 import org.wso2.carbon.application.mgt.stub.types.carbon.ApplicationMetadata;
+
+import client.configuration.AutomationConfigurationReader;
+import client.support.modules.AuthenticationLibrary;
+
 import javax.activation.DataHandler;
 
 
@@ -116,8 +118,8 @@ public class ApplicationAdminLibrary{
 		String endPoint;
 		//String host = PropertyInfo.read("host");
 		//String port = PropertyInfo.read("port");
-		String host = AutomationContext.context(AutomationContext.PRODUCT_HOST);
-		String port = AutomationContext.context(AutomationContext.PRODUCT_PORT);
+		String host = AutomationConfigurationReader.context(AutomationConfigurationReader.PRODUCT_HOST);
+		String port = AutomationConfigurationReader.context(AutomationConfigurationReader.PRODUCT_PORT);
 		String backEndUrl = "https://" + host + ":" + port + "/services/";
 		endPoint = backEndUrl + serviceName;//+ "/services/" 
 		stub = new ApplicationAdminStub(endPoint);
