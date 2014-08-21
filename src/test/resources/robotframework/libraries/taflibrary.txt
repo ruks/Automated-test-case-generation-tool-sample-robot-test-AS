@@ -5,8 +5,8 @@ Library  client.support.modules.AxisServiceClient
 Library	 client.support.modules.AssertLibrary
 Library	 client.support.modules.ObjectPool
 
-Library	 clients.ServiceUploaderLibrary
-Library	 clients.ServiceAdminLibrary
-Library	 clients.CarbonAppUploaderLibrary
-Library	 clients.ApplicationAdminLibrary
-Library  clients.ProxyServiceAdminLibrary
+Library	 clients.ServiceUploaderClient
+Library	 clients.ServiceAdminClient
+Library	 clients.CarbonAppUploaderClient
+Library	 clients.ApplicationAdminClient
+Library  clients.ProxyServiceAdminClient
